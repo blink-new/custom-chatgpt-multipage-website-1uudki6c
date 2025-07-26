@@ -40,37 +40,37 @@
   }
   
   .dark {
-    --background: 33 13% 13%;
-    --foreground: 0 0% 98%;
-    --card: 33 13% 13%;
-    --card-foreground: 0 0% 98%;
-    --popover: 33 13% 13%;
-    --popover-foreground: 0 0% 98%;
+    --background: 222 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
     --primary: 158 64% 52%;
-    --primary-foreground: 33 13% 13%;
-    --secondary: 33 13% 18%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 33 13% 18%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 33 13% 18%;
-    --accent-foreground: 0 0% 98%;
+    --primary-foreground: 222 84% 4.9%;
+    --secondary: 217 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 33 13% 18%;
-    --input: 33 13% 18%;
+    --border: 217 32.6% 17.5%;
+    --input: 217 32.6% 17.5%;
     --ring: 158 64% 52%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 33 13% 13%;
-    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-background: 222 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 158 64% 52%;
-    --sidebar-primary-foreground: 33 13% 13%;
-    --sidebar-accent: 33 13% 18%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 33 13% 18%;
+    --sidebar-primary-foreground: 222 84% 4.9%;
+    --sidebar-accent: 217 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 32.6% 17.5%;
     --sidebar-ring: 158 64% 52%;
   }
 }
@@ -82,6 +82,8 @@
 
   body {
     @apply bg-background text-foreground;
+
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 
@@ -113,5 +115,193 @@
   
   .prose blockquote {
     @apply border-l-4 border-primary pl-4 italic;
+  }
+
+  /* Dark animated background */
+  .dark-animated-bg {
+    background: linear-gradient(-45deg, #0f0f23, #1a1a2e, #16213e, #0f0f23);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  /* Floating particles animation */
+  .particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgb(16 163 127 / 30%);
+    border-radius: 50%;
+    animation: float 20s infinite linear;
+  }
+
+  /* Glowing effects */
+  .glow-effect {
+    box-shadow: 0 0 20px rgb(16 163 127 / 30%);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .glow-effect:hover {
+    box-shadow: 0 0 30px rgb(16 163 127 / 50%);
+  }
+
+  /* Typing animation */
+  .typing-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .typing-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: currentcolor;
+    animation: typing-dot 1.4s infinite ease-in-out;
+  }
+
+  .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+  .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+  /* Code editor styles */
+  .code-editor {
+    font-family: 'JetBrains Mono', 'Fira Code', Monaco, Consolas, monospace;
+    background: rgb(0 0 0 / 80%);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .code-line-numbers {
+    background: rgb(0 0 0 / 20%);
+    color: rgb(255 255 255 / 40%);
+    padding: 0 8px;
+    user-select: none;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  /* Pulse animation for active elements */
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  /* Matrix rain effect */
+  .matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 10%;
+  }
+
+  .matrix-char {
+    position: absolute;
+    color: #10a37f;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    animation: matrix-fall 10s linear infinite;
+  }
+
+  /* Admin panel specific styles */
+  .admin-card {
+    background: linear-gradient(135deg, rgb(16 163 127 / 10%), rgb(25 195 125 / 5%));
+    border: 1px solid rgb(16 163 127 / 20%);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .admin-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgb(16 163 127 / 20%);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0%;
+  }
+
+  10% {
+    opacity: 100%;
+  }
+
+  90% {
+    opacity: 100%;
+  }
+
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0%;
+  }
+}
+
+@keyframes typing-dot {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 50%;
+  }
+
+  40% {
+    transform: scale(1);
+    opacity: 100%;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgb(16 163 127 / 20%);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgb(16 163 127 / 40%);
+  }
+}
+
+@keyframes matrix-fall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 100%;
+  }
+
+  100% {
+    transform: translateY(100vh);
+    opacity: 0%;
   }
 }

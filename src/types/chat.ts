@@ -4,8 +4,11 @@ export interface User {
   subscriptionTier: 'free' | 'basic' | 'pro'
   messageCount: number
   tokenCount: number
+  role: 'user' | 'admin'
+  isActive: number
   createdAt: string
   updatedAt: string
+  lastLoginAt?: string
 }
 
 export interface Conversation {
